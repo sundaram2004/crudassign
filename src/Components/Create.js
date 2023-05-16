@@ -13,7 +13,7 @@ const Create = () => {
     e.preventDefault();
     console.log("clciekd");
     axios
-      .post("https://api.thomso.in/apiV1/assignment", {
+      .post("https://sugabackend.azurewebsites.net/api/crud_assignment", {
         name: name,
         email: email,
         contact: contact ,

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Update = () => {
-  const [id, setId] = useState(0);
+  const [_id, setId] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -12,7 +12,7 @@ const Update = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setId(localStorage.getItem("id"));
+    setId(localStorage.getItem("_id"));
     setName(localStorage.getItem("name"));
     setEmail(localStorage.getItem("email"));
     setContact(localStorage.getItem("contact"));
@@ -20,9 +20,9 @@ const Update = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log("Id...", id);
+    console.log("Id...", _id);
     axios
-      .put(`https://api.thomso.in/apiV1/assignment/${id}`, {
+      .put(`https://sugabackend.azurewebsites.net/api/crud_assignment/${_id}`, {
         name: name,
         email: email,
         contact:contact,

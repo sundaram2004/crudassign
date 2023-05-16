@@ -8,22 +8,22 @@ const Read = () => {
 
   function getData() {
     axios
-      .get("https://api.thomso.in/apiV1/assignment")
+      .get("https://sugabackend.azurewebsites.net/api/crud_assignment")
       .then((res) => {
         setData(res.data);
       });
   }
 
-  function handleDelete(id) {
+  function handleDelete(_id) {
     axios
-      .delete(`https://api.thomso.in/apiV1/assignment/${id}`)
+      .delete(`https://sugabackend.azurewebsites.net/api/crud_assignment/${_id}`)
       .then(() => {
         getData();
       });
   }
 
-  const setToLocalStorage = (id, name, email,contact) => {
-    localStorage.setItem("id", id);
+  const setToLocalStorage = (_id, name, email,contact) => {
+    localStorage.setItem("_id", _id);
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("contact", contact);
@@ -68,7 +68,7 @@ const Read = () => {
             <>
               <tbody>
                 <tr>
-                  <th scope="row">{eachData.id}</th>
+                  <th scope="row">{eachData._id}</th>
                   <td>{eachData.name}</td>
                   <td>{eachData.email}</td>
                   <td>{eachData.contact}</td>
@@ -78,7 +78,7 @@ const Read = () => {
                         className="btn-success"
                         onClick={() =>
                           setToLocalStorage(
-                            eachData.id,
+                            eachData._id,
                             eachData.name,
                             eachData.email,
                             eachData.contact
@@ -92,7 +92,7 @@ const Read = () => {
                   <td>
                     <button
                       className="btn-danger"
-                      onClick={() => handleDelete(eachData.id)}
+                      onClick={() => handleDelete(eachData._id)}
                     >
                       Delete
                     </button>
